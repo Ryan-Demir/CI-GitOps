@@ -1,0 +1,31 @@
+stages:
+- unit_test
+- security_scan
+- build_and_push
+- deploy_pipeline
+
+variables:
+  MS_NAME: gcr-adservice
+  MS_VERSION: v0.8.0
+
+unit_test:
+  stage: unit_test
+  script:
+    - echo "Running unit tests for micro service $MS_NAME"
+
+security_scan:
+  stage: security_scan
+  script:
+    - echo "Running SAST scan for micro service $MS_NAME"
+ 
+build_and_push:
+  stage: build_and_push
+  script:
+    - echo "Building docker image $MS_NAME:$MS_VERSION and pushing to ECR"
+
+trigger_deploy_pipeline:
+  stage: deploy_pipeline
+  trigger:
+    project: To be posted
+    branch: main
+    strategy: depend
