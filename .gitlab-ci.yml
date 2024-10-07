@@ -26,6 +26,6 @@ build_and_push:
 trigger_deploy_pipeline:
   stage: deploy_pipeline
   trigger:
-    project: To be posted
+    project: RyanDemr/CI-GitOps
     branch: main
     strategy: depend
